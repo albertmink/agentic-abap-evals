@@ -116,8 +116,8 @@ const fixtures = {
     bad: ['tadir', 'TRDIR', 'reposrc'],
   },
   'longest-method-large': {
-    good: ['method get_all_single_refs at lines 22944 to 25481'],
-    bad: ['get_all_single_refs', '22944 25481', 'some_other_method 1 999'],
+    good: ['get_all_single_refs', 'GET_ALL_SINGLE_REFS', 'method get_all_single_refs at lines 22944 to 25481'],
+    bad: ['some_other_method', 'I am not sure which is longest', 'parse_source_unit'],
   },
   'nonexistent-class': {
     good: ['the class does not exist', 'no matches found', "doesn't exist in the system"],
