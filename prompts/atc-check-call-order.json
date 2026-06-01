@@ -1,0 +1,12 @@
+{
+  "id": "atc-check-call-order",
+  "category": "multi-hop",
+  "description": "Framework archaeology. The check class redefines `verify_test` from `cl_ci_test_root` but never invokes it itself — the Code Inspector framework dispatches it. Reference search on the redefinition lands on the stub; the actual call site is in framework code. Tests reference-search noise tolerance, framework-driver inspection, and willingness to keep reading past the first plausible hit.",
+  "prompt": "On the SCI/ATC check class `cl_ycm_cc_check_api_usage`, the method `verify_test` is redefined from `cl_ci_test_root`. The check class itself never calls `verify_test` — the Code Inspector framework dispatches it. Find the framework class that contains a direct call to `<check>->verify_test( ... )`. Reply with only the class name (e.g. `cl_some_class`).",
+  "success": {
+    "type": "substring_any",
+    "needles": ["cl_ci_tests", "cl_ci_check_validator"],
+    "caseInsensitive": true
+  },
+  "notes": "Two needles because the actual dispatcher depends on the framework path; both are correct. The check class `cl_ycm_cc_check_api_usage` is a customer Z-class — replace with any redefinition of `cl_ci_test_root.verify_test` if your system lacks it."
+}

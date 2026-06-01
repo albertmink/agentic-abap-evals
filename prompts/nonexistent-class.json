@@ -1,0 +1,27 @@
+{
+  "id": "nonexistent-class",
+  "category": "negative-path",
+  "description": "Restraint test. The agent should run one search, see no results, and stop — no shell fallbacks, no hallucinated references, no fabricated line numbers. Cheap and binary; the natural template for any new negative-path eval.",
+  "prompt": "Find all references to class `zcl_does_not_exist_xyz_42` in the system.",
+  "success": {
+    "type": "substring_any",
+    "needles": [
+      "does not exist",
+      "not found",
+      "no objects",
+      "no references",
+      "no matches",
+      "could not find",
+      "doesn't exist"
+    ],
+    "caseInsensitive": true
+  },
+  "antiNeedles": [
+    "Found \\d+ reference",
+    "Line:\\s*\\d+"
+  ],
+  "constraints": {
+    "forbiddenCapabilities": ["referenceSearch"]
+  },
+  "notes": "Loose needles are appropriate here because the answer space is the *category* of correct response, not a specific identifier. antiNeedles catch fabrication: any phrasing that would only appear if the agent invented references is failed. `forbiddenCapabilities: [\"referenceSearch\"]` enforces the restraint at the runner level — the agent should reason from the search miss, not call reference-search on a non-existent target."
+}

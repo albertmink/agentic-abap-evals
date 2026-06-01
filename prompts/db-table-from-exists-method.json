@@ -1,0 +1,13 @@
+{
+  "id": "db-table-from-exists-method",
+  "category": "multi-hop",
+  "description": "Bridges OO repository code and DDIC. The agent must find the AFF handler for global classes, locate its EXISTS method, and read the method body to identify the SAP DDIC table the existence check queries. A training-data answer (TADIR, TRDIR) is wrong — the agent must derive the answer from the live source. antiNeedles catch the common shortcut.",
+  "prompt": "In the AFF (ABAP File Format) framework, the object handler for global classes/interfaces has an EXISTS method. That method reads from a single SAP database table that stores the class/interface header records. Name that database table. You must derive the answer by inspecting the live source: locate the AFF handler class for global classes, find its EXISTS method, and read just that method body to see the SELECT or table reference. Reply with only the table name.",
+  "success": {
+    "type": "substring_any",
+    "needles": ["seoclass"],
+    "caseInsensitive": true
+  },
+  "antiNeedles": ["^\\s*tadir\\s*$", "^\\s*trdir\\s*$"],
+  "notes": "antiNeedles guard the two most common training-data hallucinations. The correct answer is `seoclass`. Verified on an S/4HANA system in 2026-Q2."
+}

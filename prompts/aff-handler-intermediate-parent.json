@@ -1,0 +1,12 @@
+{
+  "id": "aff-handler-intermediate-parent",
+  "category": "multi-hop",
+  "description": "Type-hierarchy reasoning across two sibling chains. The agent must locate two related handler classes, walk both inheritance chains upward, and identify the intermediate ancestor that one (but not both) of them passes through.",
+  "prompt": "In the AFF (ABAP File Format) framework, two OO handler classes integrate file-format support with the class-and-interface repository — one handles classes, the other handles interfaces. They share a common ancestor, but inherit from different direct parents. Identify the intermediate class that sits between the common ancestor and one of these two handlers. Reply with only the class name.",
+  "success": {
+    "type": "substring_any",
+    "needles": ["cl_aff_object_handler_withsubs"],
+    "caseInsensitive": true
+  },
+  "notes": "Phrased by purpose so the answer identifier is not in the prompt. Stable SAP-standard target. Verified against an S/4HANA system in 2026-Q2."
+}

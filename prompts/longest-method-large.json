@@ -1,0 +1,12 @@
+{
+  "id": "longest-method-large",
+  "category": "multi-hop",
+  "description": "Structural navigation under pressure: find the longest public method in a class large enough that whole-file reads should not be cheaper than reading the symbol table. Tests whether the agent reaches for structural inspection (method index + line ranges) instead of dumping the entire source.",
+  "prompt": "Look at class `cl_abap_compiler`. Among its public methods, find the one with the longest method body (largest line range). Tell me the method name and the start/end lines.",
+  "success": {
+    "type": "substring_all",
+    "needles": ["get_all_single_refs", "22944", "25481"],
+    "caseInsensitive": true
+  },
+  "notes": "Stable SAP-standard target. Line numbers verified against an S/4HANA system in 2026-Q2 — re-verify against your system before relying on them; small drifts are normal across releases. If your system shows different numbers, update the needles to your ground truth."
+}

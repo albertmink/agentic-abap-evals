@@ -1,0 +1,10 @@
+{
+  "_comment": "Default constraints applied to every prompt spec. A prompt's `constraints` block is merged on top — set a key to `true` to allow what defaults forbid, or add prompt-specific entries (e.g. `forbiddenCapabilities`). Runners enforce constraints; the grader does not. See CAPABILITIES.md for the vocabulary.",
+  "constraints": {
+    "localFilesystemAccess": false,
+    "shellExecution": false,
+    "webSearch": false,
+    "subAgents": false,
+    "destinationMutation": false
+  }
+}

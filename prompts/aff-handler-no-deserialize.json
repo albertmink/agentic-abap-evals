@@ -1,0 +1,19 @@
+{
+  "id": "aff-handler-no-deserialize",
+  "category": "multi-hop",
+  "description": "OO method-override discovery across many handler classes. The agent must enumerate AFF object handlers, inspect each one's `is_deserializable` implementation, and identify any handler that diverges from the base by returning `abap_false`. Multi-needle success — any of the six valid handlers passes.",
+  "prompt": "Find an AFF object handler class that overrides is_deserializable to return abap_false. Reply with only the class name.",
+  "success": {
+    "type": "substring_any",
+    "needles": [
+      "cl_ddls_aff_object_handler",
+      "cl_ilmb_aff_object_handler",
+      "cl_seef_aff_objecthandler_enho",
+      "cl_aobj_aff_object_handler",
+      "cl_seef_aff_objecthandler_enhs",
+      "cl_dcls_aff_object_handler"
+    ],
+    "caseInsensitive": true
+  },
+  "notes": "Originally framed as a plural-answer question; reframed as single-target with multi-needle so any correct handler passes the same multi-hop discovery without format-trapping the agent."
+}
