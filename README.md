@@ -1,10 +1,10 @@
 # agentic-abap-evals
 
-A vendor-neutral collection of agentic ABAP benchmarks.
+A collection of agentic ABAP benchmarks.
 
 Each eval is a natural-language task an ABAP developer might hand to an agent (find an override, walk a type hierarchy, locate a framework dispatcher) plus a rubric that grades the agent's final answer **without inspecting how it got there**. Bring any agent stack — MCP server, IDE plugin, custom integration. If it answers the question, it passes.
 
-Today this repo is a curated showcase of what is possible. Over time, the goal is a shared platform on which any ABAP-aware agent can be measured against a common bar.
+Today this repo is a curated showcase of what is possible.
 
 ## The six showcase evals
 
@@ -17,7 +17,7 @@ Today this repo is a curated showcase of what is possible. Over time, the goal i
 | [`longest-method-large`](prompts/longest-method-large.json) | multi-hop | Find the longest public method in a class large enough that whole-file reads should not be cheaper. |
 | [`nonexistent-class`](prompts/nonexistent-class.json) | negative-path | Restraint test. The agent should run one search, see nothing, and stop — no fabrications. |
 
-All six target SAP-standard objects (`cl_aff_*`, `cl_abap_compiler`, `if_ci_test`) so any system with a standard ABAP stack can run them. One (`atc-check-call-order`) references a customer Z-class as the entry point — see its `notes` field for substitutions.
+All six target SAP-standard objects (`cl_aff_*`, `cl_abap_compiler`, `if_ci_test`) so any system with a standard ABAP stack can run them.
 
 ## How to use them
 
@@ -100,11 +100,10 @@ This is a v1 deliberately scoped to a curated showcase. Things we will add when 
 - A reference runner harness, once two or more agent stacks have informally validated the suite.
 - Aggregated benchmark dashboards, once the contributor base wants them.
 
-We are explicit about what we are *not* shipping today: a runner, leaderboards, scheduled evals, regression baselines. Those are infrastructure choices that depend on community shape; we would rather see what contributors need than guess.
 
 ## Contributing
 
-We want your evals. The bar is high — see [`PROMPT_QUALITY.md`](PROMPT_QUALITY.md) — but the format is small and the review loop is short. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) and open a PR.
+We want your evals. Read [`PROMPT_QUALITY.md`](PROMPT_QUALITY.md) resp. [`CONTRIBUTING.md`](CONTRIBUTING.md) and open a PR.
 
 ## License
 
